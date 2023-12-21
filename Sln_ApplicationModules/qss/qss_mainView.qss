@@ -1,0 +1,74 @@
+QWidget#widgetMain {
+    border: 1px solid rgb(121, 121, 121);
+}
+
+/* QWidget {
+    background-color: rgb(242, 242, 242);
+} */
+
+QWidget#widget_radius {
+    background-color: rgb(242, 242, 242);
+    border: 1px solid rgb(121, 121, 121);
+    border-radius: 5px;
+}
+
+QPushButton#managerView_button {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+QPushButton#common_button {
+    font-size: 18px;
+    border: 1px solid rgb(121, 121, 121);
+    background-color: rgb(0, 127, 127);
+    color: white;
+    border-radius: 5px;
+}
+
+QTableView#common_table {
+    border: 1px solid gray;
+}
+
+QTableView#common_table::item {
+    text-align: center;
+    font-size: 14px;
+}
+
+QLineEdit#common_lineEdit {
+    font-size: 18px;
+    border: 1px solid rgb(121, 121, 121);
+    color: black;
+}
+
+QPlainTextEdit#common_plainTextEdit {
+    font-size: 18px;
+    border: 1px solid rgb(121, 121, 121);
+    color: black;
+}
+
+QLabel#common_label {
+    font-size: 18px;
+    color: black;
+}
+
+/* QPaintTest */
+QWidget#paint_top {
+    background-color: rgb(177, 177, 177);
+}
+
+QWidget#paintTest_left
+{
+    background-color: rgb(40, 44, 52);
+}
+
+QWidget#paintTest_widgetDropMenuItem
+{
+    background-color: rgb(222, 222, 222);
+    border: 1px solid rgb(121, 121, 121);
+}
+
+
+QLabel#common_diagramAttrTips {
+    font-size: 16px;
+    color: white;
+}
