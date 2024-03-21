@@ -65,10 +65,10 @@ MainWindow::MainWindow(QWidget *parent) :
 	layoutMenu->setSpacing(20);
 	widgetMenu->setLayout(layoutMenu);
 
-	createDiagramMenuItem(DiagramItemType::Step, "过程");
-	createDiagramMenuItem(DiagramItemType::Conditional, "条件");
-	createDiagramMenuItem(DiagramItemType::StartEnd, "起止");
-	createDiagramMenuItem(DiagramItemType::IO, "数据");
+	createDiagramMenuItem(DiagramItemType::Step, QString::fromLocal8Bit("过程"));
+	createDiagramMenuItem(DiagramItemType::Conditional, QString::fromLocal8Bit("条件"));
+	createDiagramMenuItem(DiagramItemType::StartEnd, QString::fromLocal8Bit("起止"));
+	createDiagramMenuItem(DiagramItemType::IO, QString::fromLocal8Bit("数据"));
 
 	//左侧属性
 	QWidget* widgetAttribute = new QWidget();
@@ -133,9 +133,9 @@ void MainWindow::createMenus()
 	connect(actionAddLine, &QAction::triggered, this, [=]() {scene->createNewLine(); });
 }
 
-void MainWindow::createDiagramMenuItem(DiagramItemType _itemType, char* _text)
+void MainWindow::createDiagramMenuItem(DiagramItemType _itemType, QString _text)
 {
-	DiagramItemData* data = new DiagramItemData(_itemType, QString::fromLocal8Bit(_text));
+	DiagramItemData* data = new DiagramItemData(_itemType, _text);
 	DiagramMenuItem* diagramMenuItem = new DiagramMenuItem(data, widgetLeft);
 	widgetDiagramMenuCubeList.append(diagramMenuItem);
 	layoutMenu->addWidget(diagramMenuItem, layoutMenu->count() / 2, layoutMenu->count() % 2);
@@ -203,7 +203,7 @@ void MainWindow::refreshAttrUI(DiagramItemType _diagramItemType)
 		if (cbFunc == nullptr)
 		{
 			cbFunc = new QComboBox();
-			for (size_t i = 0; i < logicfuncType::length; i++)
+			for (int i = 0; i < logicfuncType::length; i++)
 			{
 				cbFunc->addItem(logic_getLogicFuncName(static_cast<logicfuncType>(i)));
 			}
@@ -310,7 +310,7 @@ void MainWindow::slots_save()
 {
 	QJsonDocument doc = QJsonDocument();
 	QJsonArray array = QJsonArray();
-	for (size_t i = 0; i < scene->diagramItemList.length(); i++)
+	for (int i = 0; i < scene->diagramItemList.length(); i++)
 	{
 		DiagramItemData* data = scene->diagramItemList[i]->diagramItemData;
 		QJsonObject obj = QJsonObject();
@@ -320,7 +320,7 @@ void MainWindow::slots_save()
 		obj.insert("text", data->tips);
 		obj.insert("type", (int)data->diagramItemType);
 		QJsonArray arrowArray = QJsonArray();
-		for (size_t i = 0; i < data->arrows.length(); i++)
+		for (int i = 0; i < data->arrows.length(); i++)
 		{
 			arrowArray.append(data->arrows[i]);
 		}
@@ -356,7 +356,7 @@ void MainWindow::slots_load()
 	QJsonDocument doc = QJsonDocument::fromJson(jsonData);
 	if (doc.isArray()) {
 		QJsonArray array = doc.array();
-		for (size_t i = 0; i < array.count(); i++)
+		for (int i = 0; i < array.count(); i++)
 		{
 			DiagramItemData* data = new DiagramItemData();
 			QJsonObject obj = array.at(i).toObject();
@@ -368,7 +368,7 @@ void MainWindow::slots_load()
 			data->tips = obj.value("text").toString();
 			QJsonArray arrows = obj.value("arrows").toArray();
 
-			for (size_t j = 0; j < arrows.count(); j++)
+			for (int j = 0; j < arrows.count(); j++)
 			{
 				data->arrows.append(arrows[j].toInt());
 			}
@@ -378,7 +378,7 @@ void MainWindow::slots_load()
 		}
 	}
 	//连线
-	for (size_t i = 0; i < scene->diagramItemList.count(); i++)
+	for (int i = 0; i < scene->diagramItemList.count(); i++)
 	{
 		DiagramItem* startItem = scene->diagramItemList[i];
 		DiagramItemData* data = startItem->diagramItemData;

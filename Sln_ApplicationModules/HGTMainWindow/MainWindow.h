@@ -111,16 +111,16 @@ private:
 	int attrRowInitCount;
 	//-----------------------------------------function-----------------------------------------
 	void createMenus();
-	void createDiagramMenuItem(DiagramItemType, char*);
+    void createDiagramMenuItem(DiagramItemType, QString);
 	void refreshAttrUI(DiagramItemType _diagramItemType);
 	QString getSavePath();
 
 	//-----------------------------------------流程函数-----------------------------------------
-	const enum logicfuncType {
+    enum logicfuncType {
 		none,
 		logProjectName,
 		logNumber,
-		length,
+        length,
 	};
 	void logic_func_logProjectName() { Utility::Log("QPaintTest"); };
 	void logic_func_logNumber(int num) { Utility::Log(num); };

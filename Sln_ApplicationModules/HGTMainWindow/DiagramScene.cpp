@@ -116,7 +116,7 @@ void DiagramScene::linkLine(DiagramItem* startItem, DiagramItem* endItem)
 
 DiagramItem* DiagramScene::getItemByIndex(int index)
 {
-	for (size_t i = 0; i < diagramItemList.count(); i++)
+	for (int i = 0; i < diagramItemList.count(); i++)
 	{
 		if (diagramItemList[i]->diagramItemData->index == index)
 		{
@@ -214,7 +214,7 @@ void DiagramScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 
 		QGraphicsItem* _startItem = nullptr;
 		QGraphicsItem* _endItem = nullptr;
-		for (size_t i = 0; i < startItems.length(); i++)
+		for (int i = 0; i < startItems.length(); i++)
 		{
 			if (startItems[i]->type() == DiagramItem::Type)
 			{
@@ -222,7 +222,7 @@ void DiagramScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 				break;
 			}
 		}
-		for (size_t i = 0; i < endItems.length(); i++)
+		for (int i = 0; i < endItems.length(); i++)
 		{
 			if (endItems[i]->type() == DiagramItem::Type)
 			{
